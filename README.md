@@ -10,12 +10,6 @@ Bash pipeline that automates the asset discovery phase of a bug bounty engagemen
 
 Recon is repetitive: run the same tools, merge their outputs, throw away false positives, check what is actually alive. I built this pipeline to chain those steps on a VPS and get a clean, dated folder per target, instead of doing it by hand each time.
 
-## Demo
-
-[![Demo video](assets/demo-thumbnail.png)](YOUR_VIDEO_URL)
-
-<!-- Replace YOUR_VIDEO_URL with your YouTube link and add a screenshot named assets/demo-thumbnail.png -->
-
 ## How it works
 
 ```mermaid
