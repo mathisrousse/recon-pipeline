@@ -71,12 +71,12 @@ API keys for Subfinder's sources go in its own config file (`~/.config/subfinder
 ```bash
 git clone https://github.com/<your-username>/asset-discovery-pipeline.git
 cd asset-discovery-pipeline
-chmod +x passive_recon.sh
+chmod +x recon.sh
 
 export CHAOS_KEY="..."
 export GITHUB_TOKEN="..."
 
-./passive_recon.sh example.com
+./recon.sh example.com
 ```
 
 Output for a run on `example.com`:
