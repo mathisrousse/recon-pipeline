@@ -10,6 +10,45 @@ Bash pipeline that automates the asset discovery phase of a bug bounty engagemen
 
 Recon is repetitive: run the same tools, merge their outputs, throw away false positives, check what is actually alive. I built this pipeline to chain those steps on a VPS and get a clean, dated folder per target, instead of doing it by hand each time.
 
+## Usage
+
+```bash
+git clone https://github.com/<your-username>/asset-discovery-pipeline.git
+cd asset-discovery-pipeline
+chmod +x recon.sh
+
+export CHAOS_KEY="..."
+export GITHUB_TOKEN="..."
+
+./recon.sh example.com
+```
+
+Output for a run on `example.com`:
+
+```
+$BASE_DIR/example/2026-11-15/
+├── subfinder.txt
+├── assetfinder.txt
+├── chaos.txt
+├── findomain.txt
+├── github.txt
+├── all_sub.txt          # merged, deduplicated passive results
+├── clean_sub.txt        # after dnsx wildcard filtering
+├── alive_sub.txt        # live web services found by httpx
+├── gowitness.sqlite3    # screenshots and metadata
+└── screenshots/
+```
+
+<img width="855" height="455" alt="recon" src="https://github.com/user-attachments/assets/abbb3a94-a176-454d-bfeb-bfdf57bcaca9" />
+
+The gowitness report lists every live host with a screenshot thumbnail, its URL, page title and HTTP status code, so the attack surface can be triaged at a glance :
+
+<img width="1895" height="761" alt="result" src="https://github.com/user-attachments/assets/237e8ce8-76e3-4b9b-9b70-70fef5fbefa4" />
+
+
+
+
+
 ## How it works
 
 ```mermaid
@@ -65,35 +104,6 @@ go install github.com/sensepost/gowitness@latest
 API keys for Subfinder's sources go in its own config file (`~/.config/subfinder/provider-config.yaml`).
 
 **Never commit keys or tokens.** Everything above lives outside this repository.
-
-## Usage
-
-```bash
-git clone https://github.com/<your-username>/asset-discovery-pipeline.git
-cd asset-discovery-pipeline
-chmod +x recon.sh
-
-export CHAOS_KEY="..."
-export GITHUB_TOKEN="..."
-
-./recon.sh example.com
-```
-
-Output for a run on `example.com`:
-
-```
-$BASE_DIR/example/2026-11-15/
-├── subfinder.txt
-├── assetfinder.txt
-├── chaos.txt
-├── findomain.txt
-├── github.txt
-├── all_sub.txt          # merged, deduplicated passive results
-├── clean_sub.txt        # after dnsx wildcard filtering
-├── alive_sub.txt        # live web services found by httpx
-├── gowitness.sqlite3    # screenshots and metadata
-└── screenshots/
-```
 
 
 
