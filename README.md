@@ -95,24 +95,8 @@ $BASE_DIR/example/2026-11-15/
 └── screenshots/
 ```
 
-<!-- Add a screenshot of the console output and of the gowitness report here, with a domain you are allowed to publish (or example.com) -->
 
-## Limitations and ideas
-
-- Tools run one after the other. Running the passive phase in parallel would cut the total time.
-- No diff between runs yet: comparing today's `alive_sub.txt` with the previous one would highlight new assets.
-- No notification when a run finishes.
-- Output folders are named after the domain without its TLD, which can be ambiguous for multi-part TLDs.
-
-## Disclaimer
-
-This project is for educational use and authorized security testing only. Running DNS and HTTP probes against systems you don't have permission to test may be illegal. You are responsible for staying within the scope of the programs you participate in.
-
-## License
-
-[MIT](LICENSE)
 
 ## Author
 
 Mathis Roussé, cybersecurity engineering student at IMT Atlantique.
-[LinkedIn](https://www.linkedin.com/in/your-profile/)
